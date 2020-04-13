@@ -293,6 +293,7 @@ function ENT:StartFreeSpin(ply, previousWinAmount)
 								self:TriggerWinscreen(self:GetWinAmount())
 							end
 
+							hook.Run("CODEBLUE.RedSushi.WinSpin", ply, isWin.pay * (REDSUSHI.CONFIG.CreditValue * self:GetBetAmount()))
 							REDSUSHI.CONFIG.AddMoney(ply, isWin.pay * (REDSUSHI.CONFIG.CreditValue * self:GetBetAmount()))
 							ply:ChatPrint("[SLOT] You won $"..(isWin.pay * REDSUSHI.CONFIG.CreditValue * self:GetBetAmount()).."!")
 						end
