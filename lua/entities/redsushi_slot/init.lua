@@ -274,12 +274,14 @@ function ENT:StartFreeSpin(ply, previousWinAmount)
 					if item1 == REDSUSHI.Symbols.JACKPOT and item2 == REDSUSHI.Symbols.JACKPOT and item3 == REDSUSHI.Symbols.JACKPOT then
 						self:StopRedscreen()
 						self:TriggerJackpot()
+						hook.Run("CODEBLUE.RedSushi.WinSpin", ply, isWin.pay * (REDSUSHI.CONFIG.CreditValue * self:GetBetAmount()))
 						REDSUSHI.CONFIG.AddMoney(ply, isWin.pay * (REDSUSHI.CONFIG.CreditValue * self:GetBetAmount()))
 						ply:ChatPrint("[SLOT] You won $"..(isWin.pay * REDSUSHI.CONFIG.CreditValue * self:GetBetAmount()).."!")
 					else
 						if self:GetWinAmount() >= REDSUSHI.CONFIG.SubJackpotValue then
 							self:StopRedscreen()
 							self:TriggerJackpot()
+							hook.Run("CODEBLUE.RedSushi.WinSpin", ply, isWin.pay * (REDSUSHI.CONFIG.CreditValue * self:GetBetAmount()))
 							REDSUSHI.CONFIG.AddMoney(ply, isWin.pay * (REDSUSHI.CONFIG.CreditValue * self:GetBetAmount()))
 							ply:ChatPrint("[SLOT] You won $"..(isWin.pay * REDSUSHI.CONFIG.CreditValue * self:GetBetAmount()).."!")
 						else
